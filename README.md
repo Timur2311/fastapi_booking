@@ -46,10 +46,39 @@ pip install -r requirements.txt
 
 ### 4. Configure environment variables
 
-Create a .env file in the project root with the following content:
+- Create a .env file in the project root with the following content:
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
 POSTGRES_DB=app_db
 POSTGRES_HOST=localhost
 POSTGRES_PORT=5432
 DATABASE_URL=postgresql+asyncpg://postgres:postgres@localhost:5432/app_db
+SECRET_KEY="'i=.zBs[XfAu.E4N|yl98,q'h5#XJd"
+
+#load the environment variables
+source .env
+
+### 5. Run PostgreSQL with Docker
+
+- Start the database using Docker Compose:
+
+docker-compose up -d
+
+### 6. Initialize the database
+
+- Run the app/init_db.py script to create database tables:
+
+python app/init_db.py
+
+### 7. Run the FastAPI application
+uvicorn app.main:app --reload
+
+
+- Admin Panel
+- Access the SQLAdmin panel at:
+
+http://127.0.0.1:8000/admin
+
+- Swagger:
+http://127.0.0.1:8000/docs
+

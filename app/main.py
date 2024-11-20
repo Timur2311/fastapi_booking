@@ -9,6 +9,7 @@ from app.schemas import DeleteResponse
 from app.database import get_db
 from app.models import Office, Room, Booking
 from .admin import init_admin
+from app.models import User
 
 app = FastAPI()
 
@@ -233,7 +234,7 @@ async def register_user(
     user: schemas.UserCreate, db: AsyncSession = Depends(database.get_db)
 ):
     # Check if user already exists
-    query = select(models.User).filter(models.User.username == user.username)
+    query = select(User).filter(User.username == user.username)
     result = await db.execute(query)
     existing_user = result.scalars().first()
 
@@ -247,7 +248,7 @@ async def register_user(
     hashed_password = auth.hash_password(user.password)
 
     # Create the user and add to the database
-    new_user = models.User(username=user.username, hashed_password=hashed_password)
+    new_user = User(username=user.username, hashed_password=hashed_password)
     db.add(new_user)
     await db.commit()
 

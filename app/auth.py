@@ -5,9 +5,9 @@ from passlib.context import CryptContext
 from fastapi import Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from passlib.context import CryptContext
+from app.settings import SECRET_KEY
 
-# Secret key to encode/decode JWT
-SECRET_KEY = "your_secret_key"  # Make sure to change this to a more secure key
+
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
