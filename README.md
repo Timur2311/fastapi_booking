@@ -26,8 +26,8 @@ This is a FastAPI project using **SQLAlchemy** for database interactions and **S
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+git clone https://github.com/Timur2311/fastapi_booking.git
+cd fastapi_booking
 
 
 ### 2. Create and activate a virtual environment
