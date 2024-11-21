@@ -10,12 +10,13 @@ from app.database import get_db
 from app.models import Office, Room, Booking
 from .admin import init_admin
 from app.models import User
+import sentry_sdk
+from app.settings import SENTRY_DSN
 
 app = FastAPI()
 
 # Setup admin panel
 init_admin(app)
-
 
 @app.post("/offices/", response_model=schemas.OfficeResponse)
 async def create_office(
@@ -279,5 +280,19 @@ async def login_for_access_token(
 #     return {"items": items}
 
 
-# After defining all your routes
 add_pagination(app)
+
+sentry_sdk.init(
+    dsn=SENTRY_DSN,
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for tracing.
+    traces_sample_rate=1.0,
+    # Set profiles_sample_rate to 1.0 to profile 100%
+    # of sampled transactions.
+    # We recommend adjusting this value in production.
+    profiles_sample_rate=1.0,
+)
+
+@app.get("/sentry-debug")
+async def trigger_error():
+    division_by_zero = 1 / 0
