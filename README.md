@@ -1,4 +1,4 @@
-# FastAPI SQLAlchemy SQLAdmin Example
+# SIMPLE FASTAPI BOOKING SYSTEM
 
 This is a FastAPI project using **SQLAlchemy** for database interactions and **SQLAdmin** for an admin interface. The project is set up with **Docker** for running PostgreSQL as the database.
 
