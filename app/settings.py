@@ -15,4 +15,4 @@ SECRET_KEY = os.getenv('SECRET_KEY', "'i=.zBs[XfAu.E4N|yl98,q'h5#XJd")# Make sur
 # Construct the DATABASE_URL dynamically
 DATABASE_URL = f"postgresql+asyncpg://{postgres_user}:{postgres_password}@{postgres_host}:{postgres_port}/{postgres_db}"
 
-DATABASE_URL = "postgresql+asyncpg://postgres:postgres@localhost:5400/bookings"
+# DATABASE_URL = "postgresql+asyncpg://postgres:postgres@localhost:5444/bookings"

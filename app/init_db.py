@@ -2,7 +2,10 @@ import asyncio
 from sqlalchemy.ext.asyncio import create_async_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.future import select
+import sys
+import os
 
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from database import engine  
 from models import Base 
 
